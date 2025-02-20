@@ -3,10 +3,11 @@ ldflags=
 
 all: clean nm-naive
 
-nm-naive: nm-naive.O3
-    cc ${flags} $^ -o $@ {ldflags}
+nm-naive: nm-naive.o
+	 cc ${flags} $^ -o $@ ${ldflags}
+
 nm-naive.o: nm-naive.c
-    cc ${flags} -c $^ -o $@ {ldflags}
+	 cc ${flags} -c $^ -o $@ ${ldflags}
 
 clean:
-    remove *.o nm-naive
+	 rm -f *.o nm-naive
