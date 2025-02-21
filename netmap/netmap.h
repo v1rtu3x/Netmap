@@ -11,10 +11,10 @@
 #include <netinet/in.h>
 #include <arpa/inet.h>
 
+#include "/home/v1rtu3x/Netmap/nmutils/nmutils.h"
 
 typedef unsigned char int8;
 typedef unsigned short int16;
 typedef unsigned int int32;
 
-in_addr_t generate(void);
-int main(int, char**);
+
