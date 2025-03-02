@@ -38,6 +38,54 @@ in_addr_t generate(){
 
 }
 
+bool tcpconnect(in_addr_t ip, int16 port){
+    struct sockaddr_in sock;
+    int s, ret;
+
+    s = socket(AF_INET, SOCK_STREAM, 0);
+    assert(s > 0);
+    sock.sin_family = AF_INET;
+    sock.sin_port = htons((int)port);
+    sock.sin_addr.s_addr = ip;
+
+    ret = connect(s, (struct sockaddr *)&sock, 
+                      sizeof(struct sockaddr));
+    
+    if (ret) {
+        close(s);
+        return false;
+    }
+    else{
+        header(s, ip);
+        close(s);
+        return(true);
+    }
+    return false;           
+}
+
+int8 *header(int s, in_addr_t ip){
+    int16 i;
+    int8 *p;
+    static int8 buff[256];
+
+    zero(buff, 256);
+    i = read(s, (char *)buff, 255);
+    if (i < 2)
+        printf("0x%x\n", ip);
+    else{
+        i--;
+        p = buff + i;
+        if ((*p == '/n') || (*p == '/r'))
+            *p = 0;
+        
+        printf("0x%x: %s\n", ip, buff);
+
+    }
+
+    return buff;
+
+}
+
 //INADDR_NONE
 int main(int argc, char *argv[]){
     in_addr_t tmp;
@@ -68,8 +116,7 @@ int main(int argc, char *argv[]){
     }
 
     port = (int16)atoi(argv[1]);
-    tmp = generate();
-    printf("0x%x\n",tmp);
+
 
     return 0;
 }
