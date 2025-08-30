@@ -1,20 +1,24 @@
-/* netmap.h */
+/* netmap.h
+ * Shared includes and typedefs for the naive TCP scanner.
+ */
+
 #define _GNU_SOURCE
-#include <stdio.h>
-#include <unistd.h>
-#include <string.h>
-#include <stdlib.h>
-#include <assert.h>
-#include <errno.h>
-#include <stdbool.h>
-#include <sys/socket.h>
-#include <netinet/in.h>
-#include <arpa/inet.h>
 
-#include "/home/v1rtu3x/Netmap/nmutils/nmutils.h"
+/* Standard C / POSIX headers */
+#include <stdio.h>      /* I/O: printf, fprintf */
+#include <unistd.h>     /* read, close */
+#include <string.h>     /* strlen, memset */
+#include <stdlib.h>     /* atoi, malloc, free */
+#include <assert.h>     /* assert() */
+#include <errno.h>      /* errno codes */
+#include <stdbool.h>    /* bool type */
 
-typedef unsigned char int8;
-typedef unsigned short int16;
-typedef unsigned int int32;
+/* Networking */
+#include <sys/socket.h> /* socket(), connect() */
+#include <netinet/in.h> /* sockaddr_in, htons */
+#include <arpa/inet.h>  /* inet_addr, in_addr_t */
 
-
+/* Simple typedefs for clarity */
+typedef unsigned char  int8;   /* 8-bit  */
+typedef unsigned short int16;  /* 16-bit */
+typedef unsigned int   int32;  /* 32-bit */
