@@ -1,11 +1,11 @@
-#Netmap
+Netmap
 
 A simple IPv4 TCP connect() scanner written in C.  
 This project is for **educational purposes only** — do not use it to scan networks you do not own or have explicit permission to test.
 
 ---
 
-##Features
+Features
 - Naive TCP connect scanning using sockets
 - Works on Linux/Unix environments
 - Configurable target port and optional IP range
@@ -13,7 +13,7 @@ This project is for **educational purposes only** — do not use it to scan netw
 
 ---
 
-##Build
+Build
 Make sure you have GCC installed. Then:
 
 ```bash
